@@ -5,83 +5,62 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>中级汉语写作提升平台</title>
 <style>
-body{margin:0;font-family:system-ui,-apple-system,"PingFang SC","Microsoft YaHei";background:#F5F7FA;color:#1F2D3D}
-.container{max-width:1000px;margin:auto;padding:20px}
+body{margin:0;font-family:system-ui,-apple-system,"PingFang SC","Microsoft YaHei";background:#F6F8FB;color:#1F2D3D}
+.container{max-width:960px;margin:auto;padding:20px}
 .card{background:#fff;border-radius:12px;padding:18px;margin-top:18px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
 h1{margin-bottom:6px}
 .small{color:#6B7C93;font-size:14px}
-textarea{width:100%;min-height:100px;margin-top:8px;padding:10px;border-radius:8px;border:1px solid #D9E2EC}
-button{background:#2F80ED;color:#fff;border:none;padding:8px 12px;border-radius:6px;margin-top:8px;cursor:pointer}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+button{background:#2F80ED;color:#fff;border:none;padding:8px 12px;border-radius:6px;margin:6px 6px 0 0;cursor:pointer}
+textarea{width:100%;min-height:120px;margin-top:8px;padding:10px;border-radius:8px;border:1px solid #D9E2EC}
 .badge{display:inline-block;background:#E8F1FD;color:#2F80ED;padding:4px 10px;border-radius:20px;margin:4px 6px 0 0;font-size:13px}
 .example{background:#F2F4F8;padding:8px;border-radius:6px;margin-top:6px}
-.score{font-size:14px;margin-top:6px}
+.good{color:#27AE60}
+.warn{color:#E67E22}
 </style>
 </head>
 
 <body>
 <div class="container">
 <h1>中级汉语写作提升平台</h1>
-<div class="small">HSK4–5 教学增强型写作训练系统</div>
-
-<div class="card">
-<h3>学习目标设定</h3>
-<label><input type="checkbox"> 能写120字完整短文</label><br>
-<label><input type="checkbox"> 掌握三段式结构</label><br>
-<label><input type="checkbox"> 减少语序错误</label>
-</div>
+<div class="small">HSK4–5 写作训练工具</div>
 
 <div class="card">
 <h3>学习路径</h3>
-<span class="badge">① 表达积累</span>
-<span class="badge">② 结构理解</span>
-<span class="badge">③ 引导写作</span>
-<span class="badge">④ 获取反馈</span>
+<span class="badge">① 学表达</span>
+<span class="badge">② 学结构</span>
+<span class="badge">③ 写作文</span>
+<span class="badge">④ 看反馈</span>
+</div>
+
+<div class="card">
+<h3>选择写作题目</h3>
+<button onclick="setTopic('难忘的一次经历')">难忘的一次经历</button>
+<button onclick="setTopic('我对手机使用的看法')">我对手机使用的看法</button>
+<button onclick="setTopic('一次有意义的旅行')">一次有意义的旅行</button>
+<div class="small">当前题目：<span id="topic">未选择</span></div>
 </div>
 
 <div class="card">
 <h3>表达工具库（点击插入）</h3>
-<div class="grid">
-<button onclick="insert('近年来，越来越多的人开始…')">描述现象</button>
+<button onclick="insert('近年来，越来越多的人开始关注这个问题。')">描述现象</button>
 <button onclick="insert('我认为，这种做法具有重要意义。')">表达观点</button>
 <button onclick="insert('主要原因有以下几个方面。')">原因分析</button>
-<button onclick="insert('总的来说，我们需要…')">总结归纳</button>
-</div>
+<button onclick="insert('总的来说，我们需要更加重视。')">总结归纳</button>
 </div>
 
 <div class="card">
 <h3>篇章结构模板</h3>
-<div class="example">背景 → 原因分析 → 总结建议（三段式）</div>
+<div class="example">背景介绍 → 原因分析 → 总结建议（三段式）</div>
 </div>
 
 <div class="card">
-<h3>示范范例</h3>
-<div class="example">
-题目：难忘的经历<br>
-第一段：事情背景<br>
-第二段：经过与感受<br>
-第三段：收获与影响
-</div>
+<h3>写作区</h3>
+<textarea id="essay" placeholder="请开始写作..."></textarea>
+<button onclick="exportTxt()">导出作文</button>
 </div>
 
 <div class="card">
-<h3>引导式写作训练</h3>
-<div class="small">Step1 提纲（写发生了什么）</div>
-<textarea id="outline"></textarea>
-
-<div class="small">Step2 段落扩写</div>
-<textarea id="para"></textarea>
-
-<div class="small">Step3 完整作文</div>
-<textarea id="essay" oninput="countWords()"></textarea>
-<div class="small">字数：<span id="wc">0</span></div>
-
-<button onclick="save()">自动保存</button>
-<button onclick="exportTxt()">导出TXT</button>
-</div>
-
-<div class="card">
-<h3>智能反馈</h3>
+<h3>学习反馈</h3>
 <button onclick="feedback()">生成反馈</button>
 <div id="fb" class="example" style="display:none"></div>
 </div>
@@ -89,36 +68,38 @@ button{background:#2F80ED;color:#fff;border:none;padding:8px 12px;border-radius:
 </div>
 
 <script>
-function insert(t){
-  document.getElementById('essay').value += t;
-  countWords();
-}
-function countWords(){
-  let n=document.getElementById('essay').value.length;
-  document.getElementById('wc').innerText=n;
-}
-function save(){
-  localStorage.setItem('essay',document.getElementById('essay').value);
-  alert('已自动保存');
-}
+function setTopic(t){document.getElementById('topic').innerText=t}
+function insert(t){document.getElementById('essay').value+=t}
 function exportTxt(){
-  let blob=new Blob([document.getElementById('essay').value],{type:'text/plain'});
-  let a=document.createElement('a');
-  a.href=URL.createObjectURL(blob);
-  a.download='作文.txt';
-  a.click();
+ let blob=new Blob([essay.value],{type:'text/plain'});
+ let a=document.createElement('a');
+ a.href=URL.createObjectURL(blob);
+ a.download='作文.txt';
+ a.click();
 }
 function feedback(){
-  let box=document.getElementById('fb');
-  box.style.display='block';
-  box.innerHTML=
-  "评分：<br>"+
-  "<div class='score'>结构：良好</div>"+
-  "<div class='score'>表达：可提升</div>"+
-  "<div class='score'>语法：需注意语序</div><br>"+
-  "修改示例：<br>"+
-  "原句：我昨天去图书馆学习很开心<br>"+
-  "建议：昨天我去图书馆学习，感到非常开心";
+ let box=document.getElementById('fb');
+ box.style.display='block';
+ box.innerHTML=
+ "<b>能力评价：</b><br>"+
+ "表达清晰度：⭐⭐⭐⭐<br>"+
+ "结构完整度：⭐⭐⭐<br>"+
+ "语法准确度：⭐⭐⭐⭐<br><br>"+
+ "<b>详细指导：</b><br>"+
+ "<span class='good'>✔ 你已经把事情经过写清楚了，很棒！</span><br>"+
+ "<span class='warn'>语序建议：</span><br>"+
+ "原句：我昨天在图书馆书看了<br>"+
+ "修改：我昨天在图书馆看了书<br>"+
+ "说明：动词后面要接宾语。<br><br>"+
+ "<span class='warn'>词汇建议：</span><br>"+
+ "原句：提高兴趣<br>"+
+ "修改：培养兴趣<br>"+
+ "说明：“兴趣”通常和“培养”搭配。<br><br>"+
+ "<span class='warn'>语法建议：</span><br>"+
+ "原句：因为下雨，所以但是我没去<br>"+
+ "修改：因为下雨，所以我没去<br>"+
+ "说明：“因为…所以…”不能再加“但是”。<br><br>"+
+ "🌟 小建议：如果在第二段开头加“首先”，文章会更有条理。继续加油！";
 }
 </script>
 
