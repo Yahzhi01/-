@@ -5,14 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>中级汉语写作提升平台</title>
 <style>
-body{margin:0;font-family:system-ui,-apple-system,"PingFang SC","Microsoft YaHei";background:#F6F8FB;color:#1F2D3D}
-.container{max-width:960px;margin:auto;padding:20px}
+body{margin:0;font-family:system-ui,-apple-system,"PingFang SC","Microsoft YaHei";background:#F7F9FC;color:#1F2D3D}
+.container{max-width:900px;margin:auto;padding:20px}
 .card{background:#fff;border-radius:12px;padding:18px;margin-top:18px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
 h1{margin-bottom:6px}
 .small{color:#6B7C93;font-size:14px}
-button{background:#2F80ED;color:#fff;border:none;padding:8px 12px;border-radius:6px;margin:6px 6px 0 0;cursor:pointer}
-textarea{width:100%;min-height:120px;margin-top:8px;padding:10px;border-radius:8px;border:1px solid #D9E2EC}
-.badge{display:inline-block;background:#E8F1FD;color:#2F80ED;padding:4px 10px;border-radius:20px;margin:4px 6px 0 0;font-size:13px}
+textarea{width:100%;min-height:120px;margin-top:10px;padding:10px;border-radius:8px;border:1px solid #D9E2EC}
+button{background:#2F80ED;color:#fff;border:none;padding:10px 14px;border-radius:8px;margin-top:10px;cursor:pointer}
 .example{background:#F2F4F8;padding:8px;border-radius:6px;margin-top:6px}
 .good{color:#27AE60}
 .warn{color:#E67E22}
@@ -22,84 +21,61 @@ textarea{width:100%;min-height:120px;margin-top:8px;padding:10px;border-radius:8
 <body>
 <div class="container">
 <h1>中级汉语写作提升平台</h1>
-<div class="small">HSK4–5 写作训练工具</div>
+<div class="small">HSK4–5 写作训练 · 教学闭环版</div>
 
 <div class="card">
-<h3>学习路径</h3>
-<span class="badge">① 学表达</span>
-<span class="badge">② 学结构</span>
-<span class="badge">③ 写作文</span>
-<span class="badge">④ 看反馈</span>
-</div>
-
-<div class="card">
-<h3>选择写作题目</h3>
-<button onclick="setTopic('难忘的一次经历')">难忘的一次经历</button>
-<button onclick="setTopic('我对手机使用的看法')">我对手机使用的看法</button>
-<button onclick="setTopic('一次有意义的旅行')">一次有意义的旅行</button>
-<div class="small">当前题目：<span id="topic">未选择</span></div>
-</div>
-
-<div class="card">
-<h3>表达工具库（点击插入）</h3>
-<button onclick="insert('近年来，越来越多的人开始关注这个问题。')">描述现象</button>
-<button onclick="insert('我认为，这种做法具有重要意义。')">表达观点</button>
-<button onclick="insert('主要原因有以下几个方面。')">原因分析</button>
-<button onclick="insert('总的来说，我们需要更加重视。')">总结归纳</button>
-</div>
-
-<div class="card">
-<h3>篇章结构模板</h3>
+<h3>① 写作支架</h3>
+<b>篇章结构模板：</b>
 <div class="example">背景介绍 → 原因分析 → 总结建议（三段式）</div>
+
+<b>功能表达支架：</b>
+<div class="example">
+• 描述现象：近年来，越来越多的人开始关注……<br>
+• 表达观点：我认为，这种做法具有重要意义。<br>
+• 原因分析：主要原因有以下几个方面。<br>
+• 总结归纳：总的来说，我们需要更加重视。
+</div>
 </div>
 
 <div class="card">
-<h3>写作区</h3>
-<textarea id="essay" placeholder="请开始写作..."></textarea>
-<button onclick="exportTxt()">导出作文</button>
+<h3>② 第一次写作</h3>
+<textarea id="draft1" placeholder="请根据上方支架完成你的作文初稿…"></textarea>
+<button onclick="giveFeedback()">获取修改建议</button>
 </div>
 
 <div class="card">
-<h3>学习反馈</h3>
-<button onclick="feedback()">生成反馈</button>
+<h3>③ 精准修改指导</h3>
 <div id="fb" class="example" style="display:none"></div>
+</div>
+
+<div class="card">
+<h3>④ 修改后再写</h3>
+<textarea placeholder="根据修改建议，重新完成你的作文…"></textarea>
+<div class="small">✨ 对比两次写作，你会看到明显进步。</div>
 </div>
 
 </div>
 
 <script>
-function setTopic(t){document.getElementById('topic').innerText=t}
-function insert(t){document.getElementById('essay').value+=t}
-function exportTxt(){
- let blob=new Blob([essay.value],{type:'text/plain'});
- let a=document.createElement('a');
- a.href=URL.createObjectURL(blob);
- a.download='作文.txt';
- a.click();
-}
-function feedback(){
+function giveFeedback(){
  let box=document.getElementById('fb');
  box.style.display='block';
  box.innerHTML=
- "<b>能力评价：</b><br>"+
- "表达清晰度：⭐⭐⭐⭐<br>"+
- "结构完整度：⭐⭐⭐<br>"+
- "语法准确度：⭐⭐⭐⭐<br><br>"+
- "<b>详细指导：</b><br>"+
- "<span class='good'>✔ 你已经把事情经过写清楚了，很棒！</span><br>"+
- "<span class='warn'>语序建议：</span><br>"+
+ "<b>修改建议：</b><br><br>"+
+ "<span class='good'>👍 优点：</span>你已经把事情经过写清楚了，很棒！<br><br>"+
+ "<span class='warn'>语序调整：</span><br>"+
  "原句：我昨天在图书馆书看了<br>"+
  "修改：我昨天在图书馆看了书<br>"+
- "说明：动词后面要接宾语。<br><br>"+
- "<span class='warn'>词汇建议：</span><br>"+
+ "说明：汉语里，动词后面要接宾语。<br><br>"+
+ "<span class='warn'>词汇优化：</span><br>"+
  "原句：提高兴趣<br>"+
  "修改：培养兴趣<br>"+
- "说明：“兴趣”通常和“培养”搭配。<br><br>"+
- "<span class='warn'>语法建议：</span><br>"+
+ "说明：“兴趣”通常和“培养”搭配，更自然。<br><br>"+
+ "<span class='warn'>语法修正：</span><br>"+
  "原句：因为下雨，所以但是我没去<br>"+
  "修改：因为下雨，所以我没去<br>"+
  "说明：“因为…所以…”不能再加“但是”。<br><br>"+
- "🌟 小建议：如果在第二段开头加“首先”，文章会更有条理。继续加油！";
+ "🌟 小建议：如果在第二段开头加“首先”，文章会更有条理。";
 }
 </script>
 
