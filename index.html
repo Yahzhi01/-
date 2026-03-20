@@ -5,90 +5,120 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>中级汉语写作提升平台</title>
 <style>
-body{margin:0;font-family:system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:#F5F7FA;color:#1F2D3D}
-.container{max-width:960px;margin:auto;padding:20px}
-h1{margin-bottom:6px}
-.subtitle{color:#6B7C93}
+body{margin:0;font-family:system-ui,-apple-system,"PingFang SC","Microsoft YaHei";background:#F5F7FA;color:#1F2D3D}
+.container{max-width:1000px;margin:auto;padding:20px}
 .card{background:#fff;border-radius:12px;padding:18px;margin-top:18px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
-.step{display:inline-block;background:#E8F1FD;color:#2F80ED;padding:6px 10px;border-radius:20px;margin:4px 6px 0 0;font-size:14px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+h1{margin-bottom:6px}
+.small{color:#6B7C93;font-size:14px}
+textarea{width:100%;min-height:100px;margin-top:8px;padding:10px;border-radius:8px;border:1px solid #D9E2EC}
+button{background:#2F80ED;color:#fff;border:none;padding:8px 12px;border-radius:6px;margin-top:8px;cursor:pointer}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.badge{display:inline-block;background:#E8F1FD;color:#2F80ED;padding:4px 10px;border-radius:20px;margin:4px 6px 0 0;font-size:13px}
 .example{background:#F2F4F8;padding:8px;border-radius:6px;margin-top:6px}
-.highlight{background:#FFF3B0;padding:2px 4px;border-radius:4px}
-textarea{width:100%;min-height:110px;margin-top:10px;padding:10px;border-radius:8px;border:1px solid #D9E2EC}
-button{background:#2F80ED;color:#fff;border:none;padding:10px 14px;border-radius:8px;margin-top:10px;cursor:pointer}
-.small{font-size:14px;color:#6B7C93}
+.score{font-size:14px;margin-top:6px}
 </style>
 </head>
 
 <body>
 <div class="container">
-  <h1>中级汉语写作提升平台</h1>
-  <div class="subtitle">HSK4–5 写作训练工具</div>
+<h1>中级汉语写作提升平台</h1>
+<div class="small">HSK4–5 教学增强型写作训练系统</div>
 
-  <div class="card">
-    <h3>学习路径</h3>
-    <span class="step">① 学表达</span>
-    <span class="step">② 学结构</span>
-    <span class="step">③ 做训练</span>
-    <span class="step">④ 得反馈</span>
-  </div>
+<div class="card">
+<h3>学习目标设定</h3>
+<label><input type="checkbox"> 能写120字完整短文</label><br>
+<label><input type="checkbox"> 掌握三段式结构</label><br>
+<label><input type="checkbox"> 减少语序错误</label>
+</div>
 
-  <div class="card">
-    <h3>功能表达工具库</h3>
-    <div class="grid">
-      <div>
-        <b>描述现象</b>
-        <div class="example">近年来，<span class="highlight">越来越多</span>的人开始…</div>
-      </div>
-      <div>
-        <b>表达观点</b>
-        <div class="example">我认为，这种做法<span class="highlight">具有重要意义</span>。</div>
-      </div>
-      <div>
-        <b>原因分析</b>
-        <div class="example">主要原因有<span class="highlight">以下几个方面</span>。</div>
-      </div>
-      <div>
-        <b>比较对比</b>
-        <div class="example">与过去相比，现在<span class="highlight">更加…</span></div>
-      </div>
-      <div>
-        <b>总结归纳</b>
-        <div class="example"><span class="highlight">总的来说</span>，我们需要…</div>
-      </div>
-    </div>
-  </div>
+<div class="card">
+<h3>学习路径</h3>
+<span class="badge">① 表达积累</span>
+<span class="badge">② 结构理解</span>
+<span class="badge">③ 引导写作</span>
+<span class="badge">④ 获取反馈</span>
+</div>
 
-  <div class="card">
-    <h3>篇章结构模板</h3>
-    <div class="small">万能三段式</div>
-    <div class="example">
-      第一段：背景 + 现象<br>
-      第二段：原因 / 分析<br>
-      第三段：总结 + 建议
-    </div>
-  </div>
+<div class="card">
+<h3>表达工具库（点击插入）</h3>
+<div class="grid">
+<button onclick="insert('近年来，越来越多的人开始…')">描述现象</button>
+<button onclick="insert('我认为，这种做法具有重要意义。')">表达观点</button>
+<button onclick="insert('主要原因有以下几个方面。')">原因分析</button>
+<button onclick="insert('总的来说，我们需要…')">总结归纳</button>
+</div>
+</div>
 
-  <div class="card">
-    <h3>引导式写作训练</h3>
-    <div class="small">题目：我最难忘的一次经历</div>
-    <textarea id="outline" placeholder="Step1 写提纲：发生了什么？为什么难忘？"></textarea>
-    <textarea id="para" placeholder="Step2 扩写成段落"></textarea>
-    <textarea id="essay" placeholder="Step3 完整作文"></textarea>
-    <button onclick="feedback()">获取反馈</button>
-    <div id="fb" class="example" style="display:none;margin-top:10px"></div>
-  </div>
+<div class="card">
+<h3>篇章结构模板</h3>
+<div class="example">背景 → 原因分析 → 总结建议（三段式）</div>
+</div>
+
+<div class="card">
+<h3>示范范例</h3>
+<div class="example">
+题目：难忘的经历<br>
+第一段：事情背景<br>
+第二段：经过与感受<br>
+第三段：收获与影响
+</div>
+</div>
+
+<div class="card">
+<h3>引导式写作训练</h3>
+<div class="small">Step1 提纲（写发生了什么）</div>
+<textarea id="outline"></textarea>
+
+<div class="small">Step2 段落扩写</div>
+<textarea id="para"></textarea>
+
+<div class="small">Step3 完整作文</div>
+<textarea id="essay" oninput="countWords()"></textarea>
+<div class="small">字数：<span id="wc">0</span></div>
+
+<button onclick="save()">自动保存</button>
+<button onclick="exportTxt()">导出TXT</button>
+</div>
+
+<div class="card">
+<h3>智能反馈</h3>
+<button onclick="feedback()">生成反馈</button>
+<div id="fb" class="example" style="display:none"></div>
+</div>
+
 </div>
 
 <script>
+function insert(t){
+  document.getElementById('essay').value += t;
+  countWords();
+}
+function countWords(){
+  let n=document.getElementById('essay').value.length;
+  document.getElementById('wc').innerText=n;
+}
+function save(){
+  localStorage.setItem('essay',document.getElementById('essay').value);
+  alert('已自动保存');
+}
+function exportTxt(){
+  let blob=new Blob([document.getElementById('essay').value],{type:'text/plain'});
+  let a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download='作文.txt';
+  a.click();
+}
 function feedback(){
-  const box=document.getElementById('fb');
+  let box=document.getElementById('fb');
   box.style.display='block';
   box.innerHTML=
-  "反馈建议：<br>"+
-  "• 建议增加连接词提升逻辑<br>"+
-  "• 可加入“总的来说”等总结表达<br>"+
-  "• 注意长句断句";
+  "评分：<br>"+
+  "<div class='score'>结构：良好</div>"+
+  "<div class='score'>表达：可提升</div>"+
+  "<div class='score'>语法：需注意语序</div><br>"+
+  "修改示例：<br>"+
+  "原句：我昨天去图书馆学习很开心<br>"+
+  "建议：昨天我去图书馆学习，感到非常开心";
 }
 </script>
 
