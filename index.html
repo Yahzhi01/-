@@ -3,79 +3,167 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>中级汉语写作提升平台</title>
+<title>中级汉语写作提升平台（教学展示版）</title>
+
 <style>
-body{margin:0;font-family:system-ui,-apple-system,"PingFang SC","Microsoft YaHei";background:#F7F9FC;color:#1F2D3D}
-.container{max-width:900px;margin:auto;padding:20px}
-.card{background:#fff;border-radius:12px;padding:18px;margin-top:18px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
-h1{margin-bottom:6px}
-.small{color:#6B7C93;font-size:14px}
-textarea{width:100%;min-height:120px;margin-top:10px;padding:10px;border-radius:8px;border:1px solid #D9E2EC}
-button{background:#2F80ED;color:#fff;border:none;padding:10px 14px;border-radius:8px;margin-top:10px;cursor:pointer}
-.example{background:#F2F4F8;padding:8px;border-radius:6px;margin-top:6px}
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,"PingFang SC","Microsoft YaHei";
+  background:#F5F7FA;
+  color:#1F2D3D;
+}
+.container{max-width:1000px;margin:auto;padding:20px}
+h1{margin-bottom:5px}
+.card{
+  background:#fff;
+  border-radius:12px;
+  padding:18px;
+  margin-top:18px;
+  box-shadow:0 2px 8px rgba(0,0,0,.06);
+}
+.tag{
+  display:inline-block;
+  background:#E8F1FD;
+  color:#2F80ED;
+  padding:4px 10px;
+  border-radius:20px;
+  font-size:13px;
+  margin-right:6px;
+}
+textarea{
+  width:100%;
+  min-height:120px;
+  margin-top:10px;
+  padding:10px;
+  border-radius:8px;
+  border:1px solid #D9E2EC;
+}
+button{
+  background:#2F80ED;
+  color:#fff;
+  border:none;
+  padding:10px 14px;
+  border-radius:8px;
+  margin-top:10px;
+  cursor:pointer;
+}
+.example{
+  background:#F2F4F8;
+  padding:10px;
+  border-radius:8px;
+  margin-top:10px;
+}
 .good{color:#27AE60}
 .warn{color:#E67E22}
+.small{color:#6B7C93;font-size:14px}
 </style>
+
 </head>
 
 <body>
+
 <div class="container">
+
 <h1>中级汉语写作提升平台</h1>
-<div class="small">HSK4–5 写作训练 · 教学闭环版</div>
+<div class="small">HSK4–5 写作教学设计展示（IPO + ZPD）</div>
 
+<!-- Can-Do -->
 <div class="card">
-<h3>① 写作支架</h3>
-<b>篇章结构模板：</b>
-<div class="example">背景介绍 → 原因分析 → 总结建议（三段式）</div>
+<h3>🎯 Can-Do学习目标</h3>
+<p>
+学习者能够在提供写作结构模板和功能表达支架的条件下，
+<strong>规划并构建</strong>一篇约120字的汉语短文，
+并在系统反馈的引导下对语法错误、语序问题和词汇使用进行
+<strong>诊断与修正</strong>，
+进一步对文本表达效果进行<strong>评估与优化</strong>，
+完成更为清晰、连贯的二次改写。
+</p>
+</div>
 
-<b>功能表达支架：</b>
+<!-- IPO -->
+<div class="card">
+<h3>🔁 IPO任务链</h3>
+
+<p><span class="tag">输入 Input</span>
+AI范文 + 写作模板 + 表达支架 → 建立结构与表达认知
+</p>
+
+<p><span class="tag">处理 Process</span>
+结构识别 → 提纲构建 → 写作生成 → 修改加工
+</p>
+
+<p><span class="tag">输出 Output</span>
+完成短文 → 根据反馈优化 → 二次改写
+</p>
+
+</div>
+
+<!-- 支架 -->
+<div class="card">
+<h3>🧩 分层支架设计（ZPD）</h3>
+
 <div class="example">
-• 描述现象：近年来，越来越多的人开始关注……<br>
-• 表达观点：我认为，这种做法具有重要意义。<br>
-• 原因分析：主要原因有以下几个方面。<br>
-• 总结归纳：总的来说，我们需要更加重视。
-</div>
+<b>A类（初级）</b><br>
+高支架：词汇表 + 句型模板 + 填空写作 + 拼接句子<br>
+👉 目标：建立基本句法结构与三段式意识
 </div>
 
-<div class="card">
-<h3>② 第一次写作</h3>
-<textarea id="draft1" placeholder="请根据上方支架完成你的作文初稿…"></textarea>
-<button onclick="giveFeedback()">获取修改建议</button>
+<div class="example">
+<b>B类（中级）</b><br>
+中支架：关键词提示 + 自主提纲 + 系统反馈修改<br>
+👉 目标：提升连贯性与表达准确性
 </div>
 
+<div class="example">
+<b>C类（进阶）</b><br>
+低支架：仅提供任务情境 + 自主写作 + 自我评估<br>
+👉 目标：发展表达多样性与语言灵活性
+</div>
+
+</div>
+
+<!-- 写作 -->
 <div class="card">
-<h3>③ 精准修改指导</h3>
+<h3>✍ 写作训练（教学闭环）</h3>
+
+<div class="small">结构提示：背景 → 原因 → 总结</div>
+
+<textarea id="draft1" placeholder="Step1：写初稿…"></textarea>
+
+<button onclick="feedback()">获取修改建议</button>
+
 <div id="fb" class="example" style="display:none"></div>
-</div>
 
-<div class="card">
-<h3>④ 修改后再写</h3>
-<textarea placeholder="根据修改建议，重新完成你的作文…"></textarea>
-<div class="small">✨ 对比两次写作，你会看到明显进步。</div>
+<textarea placeholder="Step2：根据反馈重新写…"></textarea>
+
 </div>
 
 </div>
 
 <script>
-function giveFeedback(){
+function feedback(){
  let box=document.getElementById('fb');
  box.style.display='block';
  box.innerHTML=
- "<b>修改建议：</b><br><br>"+
- "<span class='good'>👍 优点：</span>你已经把事情经过写清楚了，很棒！<br><br>"+
- "<span class='warn'>语序调整：</span><br>"+
+ "<b>学习反馈：</b><br><br>"+
+ "<span class='good'>👍 优点：</span>你的内容已经表达清楚了，很不错！<br><br>"+
+
+ "<span class='warn'>语序问题：</span><br>"+
  "原句：我昨天在图书馆书看了<br>"+
- "修改：我昨天在图书馆看了书<br>"+
- "说明：汉语里，动词后面要接宾语。<br><br>"+
- "<span class='warn'>词汇优化：</span><br>"+
+ "建议：我昨天在图书馆看了书<br>"+
+ "👉 动词后面要接宾语<br><br>"+
+
+ "<span class='warn'>词汇问题：</span><br>"+
  "原句：提高兴趣<br>"+
- "修改：培养兴趣<br>"+
- "说明：“兴趣”通常和“培养”搭配，更自然。<br><br>"+
- "<span class='warn'>语法修正：</span><br>"+
+ "建议：培养兴趣<br>"+
+ "👉 更符合书面表达<br><br>"+
+
+ "<span class='warn'>语法问题：</span><br>"+
  "原句：因为下雨，所以但是我没去<br>"+
- "修改：因为下雨，所以我没去<br>"+
- "说明：“因为…所以…”不能再加“但是”。<br><br>"+
- "🌟 小建议：如果在第二段开头加“首先”，文章会更有条理。";
+ "建议：因为下雨，所以我没去<br>"+
+ "👉 不要重复连接词<br><br>"+
+
+ "🌟 小建议：如果加上“首先、其次”，文章会更有条理！";
 }
 </script>
 
